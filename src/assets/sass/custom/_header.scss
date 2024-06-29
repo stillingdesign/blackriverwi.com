@@ -1,0 +1,134 @@
+@use "sass:map";
+@use "uniform" as *;
+@import "layout";
+@import "links";
+
+[data-header] {
+    @include apply("fixed top:0 left:0 z:10 w:100p h:56 flex flex:col align-items:center justify-content:center sm:px:48");
+    
+    [data-header-bg] {
+        @include apply("absolute top:0 w:100p h:100p bg-opacity:80 backdrop backdrop-blur:sm transform:top");
+        transform: translate3d(0, 0, 0);
+        transition: background-color 200ms linear 0ms;
+    }
+
+    [data-header-container] {
+        @extend .container;
+        @include apply("flex align-items:center justify-content:between");
+    }
+
+    [data-header-logo] {
+        @include apply("relative block flex-shrink:0 md:w:192");
+        a {
+            @extend .focus\:primary;
+            @include apply("h:40 px:14 ml:n14 inline-flex align-items:center justify-content:start radius:full");
+            svg {
+                @include apply("w:80");
+            }
+        }
+    }
+
+    [data-mobile-menu] {
+        @include apply("flex align-items:center gap:8 md:hidden");
+        a {
+            @extend .btn;
+            @extend .btn\:sm;
+        }
+        button {
+            @include apply("relative w:36 h:36 flex flex:col gap:6 align-items:center justify-content:center mr:n8");
+            div { @include apply("w:20 h:2 "); }
+        }
+    }
+
+    [data-header-navigation-menu] {
+        @include apply("hidden md:block absolute top:46 left:0 sm:left:n48 h:minus56 md:h:auto mt:n1 md:mt:0 w:100p sm:w:plus96 md:w:auto md:top:unset md:left:unset md:relative overflow:hidden md:overflow:visible shadow:2xl md:shadow:none");
+        [data-header-navigation-menu-bg] {
+            @include apply("absolute top:0 left:0 w:100p h:100p z:n1 block md:hidden bg-opacity:90 backdrop backdrop-blur:lg border-t:1");
+            transform: translate3d(0, 0, 0);
+        }
+        [data-header-navigation-top] {
+            @include apply("relative flex flex:col md:flex:row md:align-items:center md:gap:2");
+            // Dropdowns
+            [data-header-dropdown] {
+                @include apply("relative");
+                [data-header-dropdown-button-outer] {
+                    @include apply("block border-b:1 md:border-b:0");
+                    [data-header-dropdown-button] {
+                        @extend .focus\:primary;
+                        @include apply("flex align-items:center justify-content:between md:justify-content:start radius:full border:1 leading:100 outline:none md:opacity:70 font:xl md:font:sm w:100p md:w:auto px:24 sm:px:48 md:px:18 py:10 md:py:14 hover:opacity:100");
+                        div {
+                            @include apply("block w:36 h:36 md:w:auto md:h:auto flex align-items:center justify-content:center mr:n8 md:mr:0");
+                            svg { @include apply("w:20 md:w:14 transform"); transform: translate3d(0, 0, 0); }
+                        }
+                    }
+                }
+                [data-header-dropdown-pane] {
+                    @include apply("relative md:absolute md:top:100p md:left:n20 md:hidden md:opacity:0");
+                    [data-header-dropdown-items] {
+                        @include apply("relative md:w:320 md:shadow:modal md:border:1 md:radius:lg h:0 md:h:auto overflow:hidden");
+                        [data-header-dropdown-item] {
+                            @include apply("border-b:1 md:mb:n1");
+                            a {
+                                @include apply("flex align-items:start gap:16 md:gap:8 font:lg md:font:sm leading:130 py:12 px:24 sm:px:48 md:px:16 w:100p bg:primary-rg bg-opacity:0 transition:200 cubic-out");
+                                &:focus-visible  { @include apply("bg-opacity:100 color:white outline:none")}
+                                @media (hover: hover) { &:hover  { @include apply("bg-opacity:10 transition:200 cubic-out"); }}
+                                span { @include apply("mt:6 md:mt:2 font:2xs opacity:60 tracking:looser"); }
+                                div p:nth-child(2) { @include apply("font:sm opacity:60"); }
+                            }
+                        }
+                    }
+                }
+            }
+            // Links
+            [data-header-link] {
+                @include apply("border-b:1 md:border-b:0");
+                a {
+                    @extend .focus\:primary;
+                    @include apply("flex align-items:center justify-content:between md:justify-content:start radius:full border:1 leading:100 outline:none md:opacity:70 font:xl md:font:sm w:100p md:w:auto px:24 sm:px:48 md:px:18 py:10 md:py:14 hover:opacity:100");
+                    div { @include apply("block md:hidden w:36 h:36 mr:n8 md:mr:0"); }
+                }
+            }
+        }
+    }
+
+    [data-header-ctas] {
+        @include apply("flex-shrink:0 hidden md:flex align-items:center justify-content:end gap:2 w:192");
+        a:nth-child(1) {
+            @extend .focus\:primary;
+            @include apply("flex align-items:center justify-content:between md:justify-content:start radius:full border:1 leading:100 outline:none md:opacity:70 font:xl md:font:sm w:100p md:w:auto px:24 sm:px:48 md:px:18 py:10 md:py:14 hover:opacity:100");
+        }
+        a:nth-child(2) {
+            @extend .btn;
+            @extend .btn\:sm;
+        }
+    }
+
+    // Themes
+
+    &.light {
+        @include apply("color:ink-3");
+        [data-header-bg] { @include apply("bg:sheet-6 shadow:headerLight"); }
+        [data-mobile-menu] a { @extend .btn\:primary; }
+        [data-mobile-menu] button div { @include apply("bg:ink-3"); }
+        [data-header-navigation-menu-bg] { @include apply("border:edge-2 bg:sheet-5"); }
+        [data-header-dropdown-button-outer] { @include apply("border:edge-2");}
+        [data-header-dropdown-items] { @include apply("md:bg:sheet-4 border:edge-2"); }
+        [data-header-dropdown-item],
+        [data-header-link] { @include apply("border:edge-2"); }
+        [data-header-ctas] a:nth-child(2) { @extend .btn\:primary; }
+    }
+
+    &.dark {
+        @include apply("color:ink-3-i");
+        [data-header-bg] { @include apply("bg:sheet-6-i shadow:headerDark"); }
+        [data-mobile-menu] a { @extend .btn\:primary-i; }
+        [data-mobile-menu] button div { @include apply("bg:ink-3-i"); }
+        [data-header-navigation-menu-bg] { @include apply("border:edge-2-i bg:sheet-5-i"); }
+        [data-header-dropdown-button-outer] { @include apply("border:edge-2-i");}
+        [data-header-dropdown-items] { @include apply("md:bg:sheet-4-i border:edge-2-i"); }
+        [data-header-dropdown-item],
+        [data-header-link] { @include apply("border:edge-2-i"); }
+        [data-header-ctas] a:nth-child(2) { @extend .btn\:primary-i; }
+    }
+
+}

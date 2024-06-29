@@ -1,0 +1,38 @@
+---
+layout: "main.njk"
+seoTitle: "Acme: The search and tab title"
+seoDescription: "This is the description that shows up in search engines."
+ogTitle: "This is the title that shows up in social cards"
+ogDesc: "This is the description that shows up in social cards"
+ogImage: "/assets/images/og/default.png"
+ogImageAlt: "This is the alt text for social cards images"
+theme: dark
+changefreq: daily
+---
+
+<main data-page="home">
+
+    <section {% if theme == 'light' %}data-section-theme="light"{% else %}data-section-theme="dark"{% endif %} class="section section:py min-h:100vh">
+        <div class="container flex flex:col sm:grid grid-cols:2 gap:48">
+            <div class="flex flex:col align-items:start gap:16">
+                <h1 class="font:8xl medium tracking:tighter leading:110">
+                    The website template that means business
+                </h1>
+                <p class="font:3xl leading:150 tracking:tight color:ink-1">
+                    Increase efficiency, quality, and revenue <span class="space:nowrap">with the</span> Acme website template today.
+                </p>
+                <a href="#" class="btn {% if theme == 'light' %}btn:primary{% else %}btn:primary-i{% endif %} btn:lg">
+                    Try for free
+                </a>
+            </div>
+            <div class="w:100p bg:sheet-5 radius:md">
+                
+            </div>
+        </div>
+    </section>
+
+    <section {% if theme == 'light' %}data-section-theme="dark"{% else %}data-section-theme="light"{% endif %} class="section section:py min-h:100vh {% if theme == 'light' %}bg:sheet-6-i{% else %}bg:sheet-6{% endif %}"></section>
+
+    <section {% if theme == 'light' %}data-section-theme="light"{% else %}data-section-theme="dark"{% endif %} class="section section:py min-h:100vh {% if theme == 'light' %}bg:sheet-6{% else %}bg:sheet-6-i{% endif %}"></section>
+
+</main>

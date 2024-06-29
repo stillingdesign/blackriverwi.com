@@ -1,0 +1,82 @@
+{% import "components/_icons.njk" as icons %}
+
+{# Templating #}
+{% set topLevelItem = 'flex align-items:center justify-content:between md:justify-content:start radius:full border:1 leading:100 outline:none md:opacity:70 font:xl md:font:sm w:100p md:w:auto px:24 sm:px:48 md:px:18 py:10 md:py:14 hover:opacity:100 focus:primary' %}
+
+<header data-header class="{% if theme == 'dark' %}dark{% else %}light{% endif %}" style="font-weight:400;">
+    <div data-header-bg></div>
+    <div data-header-container>
+        {# Logo #}
+        <div data-header-logo>
+            <a href="/">
+                {{ icons.wordmark() }}
+            </a>
+        </div>
+        {# Mobile Menu + CTA #}
+        <div data-mobile-menu>
+            <a href="{{ base.signupLink }}">
+                {{ base.signupText }}
+            </a>
+            <button data-header-navigation-button aria-controls="nav-menu" aria-expanded="false">
+                <div></div>
+                <div></div>
+            </button>
+        </div>
+        {# Navigation #}
+        <nav data-header-navigation-menu id="nav-menu">
+            <div data-header-navigation-menu-bg></div>
+            <ul data-header-navigation-top>
+                {% for collection in navigation | selectattr("header") %}
+                    {# Dropdowns #}
+                    {% if collection.menuItems %}
+                        <li data-header-dropdown>
+                            <div data-header-dropdown-button-outer>
+                                <button data-header-dropdown-button aria-controls="nav-{{ collection.name | slugify }}" aria-expanded="false" type="button">
+                                    {{ collection.name }}
+                                    <div>
+                                        {{ icons.chevDown() }}
+                                    </div>
+                                </button>
+                            </div>
+                            {# Menus #}
+                            <div data-header-dropdown-pane id="nav-{{ collection.name | slugify }}">
+                                <ul data-header-dropdown-items>
+                                    {% for page in collection.menuItems | selectattr("header") %}
+                                        <li data-header-dropdown-item>
+                                            <a href="{{ page.url }}">
+                                                <span>
+                                                    0{{ loop.index }}.
+                                                </span>
+                                                <div>
+                                                    <p>{{ page.label }}</p>
+                                                    <p>{{ page.description }}</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </li>
+                    {# Links #}
+                    {% else %}
+                        <li data-header-link>
+                            <a href="{{ collection.url }}">
+                                {{ collection.name }}
+                                <div></div>
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </nav>
+        {# Desktop CTAs #}
+        <div data-header-ctas>
+            <a href="{{ base.loginLink }}">
+                {{ base.loginText }}
+            </a>
+            <a href="{{ base.signupLink }}">
+                {{ base.signupText }}
+            </a>
+        </div>
+    </div>
+</header>
