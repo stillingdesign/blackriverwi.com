@@ -11,8 +11,8 @@ module.exports = {
     salesLink: "/request-demo/",
     salesText: "Get a demo",
 
-    signupLink: "/signup/",
-    signupText: "Try for free",
+    signupLink: "/itinerary/",
+    signupText: "Create an itinerary",
 
     loginLink: "/login/",
     loginText: "Login",

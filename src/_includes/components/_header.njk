@@ -3,7 +3,7 @@
 {# Templating #}
 {% set topLevelItem = 'flex align-items:center justify-content:between md:justify-content:start radius:full border:1 leading:100 outline:none md:opacity:70 font:xl md:font:sm w:100p md:w:auto px:24 sm:px:48 md:px:18 py:10 md:py:14 hover:opacity:100 focus:primary' %}
 
-<header data-header class="{% if theme == 'dark' %}dark{% else %}light{% endif %}" style="font-weight:400;">
+<header data-header class="{% if theme == 'dark' %}dark{% elif theme == 'pine' %}pine{% else %}light{% endif %}" style="font-weight:400;">
     <div data-header-bg></div>
     <div data-header-container>
         {# Logo #}
@@ -72,7 +72,7 @@
         {# Desktop CTAs #}
         <div data-header-ctas>
             <a href="{{ base.loginLink }}">
-                {{ base.loginText }}
+                History
             </a>
             <a href="{{ base.signupLink }}">
                 {{ base.signupText }}

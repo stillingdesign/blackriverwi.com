@@ -6,10 +6,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="canonical" href="{{- base.url -}}{{- page.url -}}" />
-        {% if theme == dark %}
+        {% if theme == 'dark' %}
             <meta name="theme-color" content="#000000">
-        {% else %}
+        {% elif theme == 'light' %}
             <meta name="theme-color" content="#ffffff">
+        {% elif theme == 'pine' %}
+            <meta name="theme-color" content="#071A12">
         {% endif %}
     
         {# Search + Tab #}
@@ -60,7 +62,7 @@
     </head>
 
     {# Body #}
-    <body data-barba="wrapper" class="w:100p max-w:100p font:md tracking:tight leading:160 font:sans kern:normal antialiased {% if theme == 'dark' %}bg:sheet-6-i color:ink-3-i{% else %}bg:sheet-6 color:ink-3{% endif %}" style="font-family: var(--sans);">
+    <body data-barba="wrapper" class="w:100p max-w:100p font:md tracking:tight leading:160 font:sans kern:normal antialiased {% if theme == 'dark' %}bg:sheet-6-i color:ink-3-i{% elif theme == 'pine' %}bg:sheet-6-p color:ink-3-p{% else %}bg:sheet-6 color:ink-3{% endif %}" style="font-family: var(--sans);">
 
         <div class="relative w:100p">
 

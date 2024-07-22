@@ -5,6 +5,7 @@
 .section\:py { @include apply("py:72 sm:py:112 md:py:160"); }
 .section\:pt { @include apply("pt:72 sm:pt:112 md:pt:160"); }
 .section\:pb { @include apply("pb:72 sm:pb:112 md:pb:160"); }
+.section\:start { @include apply("justify-content:start"); }
 
 .section\:no-pad { @include apply("sm:px:0"); }
 .section\:row { @include apply("flex:row"); }

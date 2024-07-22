@@ -2,8 +2,10 @@ $colors: (
 
     white: #FFFFFF,
     black: #000000,
-    primary-rg: #206BFF,
-    primary-hv: #0053FA,
+    primary-rg: #2E6C51,
+    primary-hv: #005E3C,
+    accent-rg: #BF6C42,
+    accent-hv: #EF6C2B,
 
     // Light Themed
     link-rg: #004EEB,
@@ -29,8 +31,8 @@ $colors: (
     pink:    #F700DE,
 
     // Dark Themed
-    link-rg-i: #5C92FF,
-    link-hv-i: #7AA7FF,
+    link-rg-i: #BF6C42,
+    link-hv-i: #EF6C2B,
     ink-1-i:   #969696,
     ink-2-i:   #B3B3B3,
     ink-3-i:   #FFFFFF,
@@ -50,4 +52,20 @@ $colors: (
     blue-i:    #2079FF,
     purple-i:  #9962FF,
     pink-i:    #FF5EDF,
+
+    // Pine Themed
+    headline-p:#069360,
+    link-rg-p: #BF6C42,
+    link-hv-p: #EF6C2B,
+    ink-1-p:   #99B1A7,
+    ink-2-p:   #BAC8C2,
+    ink-3-p:   #FFFFFF,
+    sheet-1-p: #1E332A, // Highlight
+    sheet-2-p: #152D23, // Subject
+    sheet-3-p: #0F291E, // Foreground
+    sheet-4-p: #0B2319, // Middleground
+    sheet-5-p: #092016, // Background
+    sheet-6-p: #071A12, // Shaded
+    edge-1-p:  #273D34,
+    edge-2-p:  #173327,
 );

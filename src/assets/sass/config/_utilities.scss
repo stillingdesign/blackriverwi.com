@@ -31,24 +31,45 @@ $utilities: (
     font-size: (
         variants: (
             3xs: 0.5rem,
+            88: 5.5rem,
+            8vw: 8vw,
+            12vw: 12vw,
+            13vw: 13vw,
         ),
     ),
     height: (
         variants: (
+            648: 40.5rem,
             100p: 100%,
+            80vh: 80vh,
+            minus8: calc(100% - 0.5rem),
+            minus32: calc(100% - 2rem),
             minus56: calc(100vh - 3.5rem),
+            minus112: calc(100vh - 7rem),
         ),
     ),
     left: (
         variants: (
             unset: unset,
+            100p: 100%,
+            150p: 150%,
+        ),
+    ),
+    margin-right: (
+        variants: (
+            448: 28rem,
+            512: 32rem,
+            576: 36rem,
         ),
     ),
     max-width: (
         variants: (
+            296: 18.5rem,
+            576: 36rem,
             672: 42rem,
             704: 44rem,
             736: 46rem,
+            896: 56rem,
             1920: 120rem,
         ),
     ),
@@ -114,6 +135,10 @@ $utilities: (
             0: 0,
             plus48: calc(100% + 3rem),
             plus96: calc(100% + 6rem),
+            minus8: calc(100% - 0.5rem),
+            minus32: calc(100% - 2rem),
+            150p: 150%,
+            200p: 200%,
         ),
     ),
     z-index: (

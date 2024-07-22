@@ -18,12 +18,12 @@
     }
 
     [data-header-logo] {
-        @include apply("relative block flex-shrink:0 md:w:192");
+        @include apply("relative flex align-items:center justify-content:start flex-shrink:0 md:w:192");
         a {
             @extend .focus\:primary;
-            @include apply("h:40 px:14 ml:n14 inline-flex align-items:center justify-content:start radius:full");
+            @include apply("border:1 h:36 px:10 ml:n10 inline-flex align-items:center justify-content:start radius:xs");
             svg {
-                @include apply("w:80");
+                @include apply("w:112 mb:n6");
             }
         }
     }
@@ -41,7 +41,7 @@
     }
 
     [data-header-navigation-menu] {
-        @include apply("hidden md:block absolute top:46 left:0 sm:left:n48 h:minus56 md:h:auto mt:n1 md:mt:0 w:100p sm:w:plus96 md:w:auto md:top:unset md:left:unset md:relative overflow:hidden md:overflow:visible shadow:2xl md:shadow:none");
+        @include apply("hidden md:block absolute top:48 left:0 sm:left:n48 h:minus56 md:h:auto mt:n1 md:mt:0 w:100p sm:w:plus96 md:w:auto md:top:unset md:left:unset md:relative overflow:hidden md:overflow:visible shadow:2xl md:shadow:none");
         [data-header-navigation-menu-bg] {
             @include apply("absolute top:0 left:0 w:100p h:100p z:n1 block md:hidden bg-opacity:90 backdrop backdrop-blur:lg border-t:1");
             transform: translate3d(0, 0, 0);
@@ -84,7 +84,7 @@
                 @include apply("border-b:1 md:border-b:0");
                 a {
                     @extend .focus\:primary;
-                    @include apply("flex align-items:center justify-content:between md:justify-content:start radius:full border:1 leading:100 outline:none md:opacity:70 font:xl md:font:sm w:100p md:w:auto px:24 sm:px:48 md:px:18 py:10 md:py:14 hover:opacity:100");
+                    @include apply("flex align-items:center justify-content:between md:justify-content:start radius:xs border:1 leading:100 outline:none md:opacity:70 font:xl md:font:sm w:100p md:w:auto px:24 sm:px:48 md:px:14 py:10 md:py:10 hover:opacity:100 medium");
                     div { @include apply("block md:hidden w:36 h:36 mr:n8 md:mr:0"); }
                 }
             }
@@ -95,11 +95,11 @@
         @include apply("flex-shrink:0 hidden md:flex align-items:center justify-content:end gap:2 w:192");
         a:nth-child(1) {
             @extend .focus\:primary;
-            @include apply("flex align-items:center justify-content:between md:justify-content:start radius:full border:1 leading:100 outline:none md:opacity:70 font:xl md:font:sm w:100p md:w:auto px:24 sm:px:48 md:px:18 py:10 md:py:14 hover:opacity:100");
+            @include apply("flex align-items:center justify-content:between md:justify-content:start radius:xs border:1 leading:100 outline:none md:opacity:70 font:xl md:font:sm w:100p md:w:auto px:24 sm:px:48 md:px:14 py:10 md:py:10 hover:opacity:100 medium");
         }
         a:nth-child(2) {
             @extend .btn;
-            @extend .btn\:sm;
+            @extend .btn\:header;
         }
     }
 
@@ -128,6 +128,19 @@
         [data-header-dropdown-items] { @include apply("md:bg:sheet-4-i border:edge-2-i"); }
         [data-header-dropdown-item],
         [data-header-link] { @include apply("border:edge-2-i"); }
+        [data-header-ctas] a:nth-child(2) { @extend .btn\:primary-i; }
+    }
+
+    &.pine {
+        @include apply("color:ink-3-p");
+        [data-header-bg] { @include apply("bg:sheet-6-p shadow:headerPine"); }
+        [data-mobile-menu] a { @extend .btn\:primary-i; }
+        [data-mobile-menu] button div { @include apply("bg:ink-3-p"); }
+        [data-header-navigation-menu-bg] { @include apply("border:edge-2-p bg:sheet-5-p"); }
+        [data-header-dropdown-button-outer] { @include apply("border:edge-2-p");}
+        [data-header-dropdown-items] { @include apply("md:bg:sheet-4-p border:edge-2-p"); }
+        [data-header-dropdown-item],
+        [data-header-link] { @include apply("border:edge-2-p"); }
         [data-header-ctas] a:nth-child(2) { @extend .btn\:primary-i; }
     }
 

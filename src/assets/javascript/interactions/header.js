@@ -63,11 +63,13 @@ function dropdownToggle(el, event, entering) {
     }
 }
 
-dropdowns.forEach(dropdown => {
-    dropdown.addEventListener("click",      function(event) { dropdownToggle(this, event) });
-    dropdown.addEventListener("mouseenter", function(event) { dropdownToggle(this, event, true) });
-    dropdown.addEventListener("mouseleave", function(event) { dropdownToggle(this, event, false) });
-})
+if(dropdowns) {
+    dropdowns.forEach(dropdown => {
+        dropdown.addEventListener("click",      function(event) { dropdownToggle(this, event) });
+        dropdown.addEventListener("mouseenter", function(event) { dropdownToggle(this, event, true) });
+        dropdown.addEventListener("mouseleave", function(event) { dropdownToggle(this, event, false) });
+    })
+}
 
 // Toggle menu on mobile
 function navigationToggle() {
@@ -123,10 +125,16 @@ function headerTheme() {
         return () => {
             if (theme == 'light') {
                 header.classList.remove('dark');
+                header.classList.remove('pine');
                 header.classList.add('light');
             } else if (theme == 'dark') {
                 header.classList.remove('light');
+                header.classList.remove('pine');
                 header.classList.add('dark');
+            } else if (theme == 'pine') {
+                header.classList.remove('light');
+                header.classList.remove('dark');
+                header.classList.add('pine');
             }
         };
     }

@@ -6,33 +6,329 @@ ogTitle: "This is the title that shows up in social cards"
 ogDesc: "This is the description that shows up in social cards"
 ogImage: "/assets/images/og/default.png"
 ogImageAlt: "This is the alt text for social cards images"
-theme: dark
+theme: light
 changefreq: daily
 ---
+{% import "components/_icons.njk" as icons %}
 
 <main data-page="home">
 
-    <section {% if theme == 'light' %}data-section-theme="light"{% else %}data-section-theme="dark"{% endif %} class="section section:py min-h:100vh">
-        <div class="container flex flex:col sm:grid grid-cols:2 gap:48">
-            <div class="flex flex:col align-items:start gap:16">
-                <h1 class="font:8xl medium tracking:tighter leading:110">
-                    The website template that means business
-                </h1>
-                <p class="font:3xl leading:150 tracking:tight color:ink-1">
-                    Increase efficiency, quality, and revenue <span class="space:nowrap">with the</span> Acme website template today.
-                </p>
-                <a href="#" class="btn {% if theme == 'light' %}btn:primary{% else %}btn:primary-i{% endif %} btn:lg">
-                    Try for free
-                </a>
+    {# Hero #}
+    <div data-hero class="relative overflow:hidden">
+
+        {# Content #}
+        <section data-hero-upper class="section pt:128 sm:pt:144 md:pt:160">
+            {# Silhoutte #}
+            <div class="absolute top:0 left:0 flex justify-content:center w:100p h:100p overflow:hidden">
+                <img src="/assets/images/home/pine-shadows-alt.webp" width="1000" height="1000" class="absolute top:n128 md:top:n224 mr:320 sm:mr:576 md:mr:320 lg:mr:576 w:200p md:w:150p max-w:none h:auto opacity:20 blend:multiply breeze" alt="">
+                <div class="absolute bottom:0 left:0 w:100p h:256 bg:fade-down"></div>
             </div>
-            <div class="w:100p bg:sheet-5 radius:md">
-                
+            {# Content #}
+            <div data-hero-content class="container flex flex:col-reverse align-items:center mb:56 sm:mb:72 md:mb:112">
+                {# Headline #}
+                <div class="relative w:100p sm:max-w:672 md:max-w:896 lg:max-w:none">
+                    <h1 class="relative font:editorial light tracking:tight font:13vw sm:font:12xl lg:font:88 leading:120 text:center w:100p">
+                        Where rivers meet the forest's grace, Black River Falls, <span class="space:nowrap">a peaceful place.</span>
+                    </h1>
+                    <img src="/assets/images/home/pileated.webp" alt="" width="112" height="105" class="hidden sm:block absolute w:96 md:w:112 h:auto top:96 md:top:n28 right:4 md:right:n2 lg:right:n48 mr:n4 transform rotate:12">
+                    <img src="/assets/images/home/squirrel.webp" width="56" height="126" class="hidden sm:block absolute w:48 md:w:56 h:auto bottom:48 md:bottom:n80 left:20 md:left:72 lg:left:40 mb:n4 transform rotate:12 md:rotate:n12" alt="">
+                </div>
+                {# Brow #}
+                {% set browColor = "white" %}
+                <div class="relative flex gap:0 align-items:center mb:32 sm:mb:40 md:mb:48">
+                    <div class="relative z:2 h:28 w:14 flex flex:col align-items:center justify-content:center">
+                        <div class="relative w:100p h:100p" style="background: linear-gradient(315deg, rgba(var(--{{browColor}}), 1) 50%, rgba(var(--{{browColor}}), 0) 50%);"></div>
+                        <div class="relative w:100p h:100p" style="background: linear-gradient(225deg, rgba(var(--{{browColor}}), 1) 50%, rgba(var(--{{browColor}}), 0) 50%);"></div>
+                        <div class="absolute w:2 h:2 ml:14 bg:ink-3 transform rotate:45"></div>
+                    </div>
+                    <div class="relative h:28 flex align-items:center justify-content:center semibold font:xs color:ink-3 px:10 pt:8 pb:6 uppercase bg:{{browColor}}" style="letter-spacing:0.2em;">
+                        <h2 class="flex align-items:center gap:4 mt:n1">
+                            <span class="italic font:editorial mb:n2" style="font-size:0.86em;">Sincerely</span> Wisconsin
+                        </h2>
+                    </div>
+                    <div class="relative z:2 h:28 w:14 flex flex:col align-items:center justify-content:center">
+                        <div class="relative w:100p h:100p" style="background: linear-gradient(-315deg, rgba(var(--{{browColor}}), 1) 50%, rgba(var(--{{browColor}}), 0) 50%);"></div>
+                        <div class="relative w:100p h:100p" style="background: linear-gradient(-225deg, rgba(var(--{{browColor}}), 1) 50%, rgba(var(--{{browColor}}), 0) 50%);"></div>
+                        <div class="absolute w:2 h:2 mr:14 bg:ink-3 transform rotate:45"></div>
+                    </div>
+                    <img src="/assets/images/home/karner-blue.webp" alt="" width="32" height="34" class="absolute left:16 top:n32 transform rotate:12 z:3">
+                </div>
+            </div>
+            {# Sub Nav #}
+            <div class="relative w:100p sm:w:plus96 md:w:100p md:max-w:1152 flex align-items:center justify-content:center">
+                <div class="absolute top:n1 left:0 md:left:16 w:100p md:w:minus32 border-t:1 border:ink-3 border-opacity:10"></div>
+                <ul data-hero-content class="relative w:100p flex flex:col sm:flex:row align-items:center">
+                    {% macro heroSubnav(link, label, icon, classesOuter, classesInner) %}
+                        <li class="relative w:100p">
+                            <a href="{{ link }}" class="hero-subnav-item relative flex justify-content:between align-items:center w:100p py:12 px:24 sm:px:0 border:ink-3 border-opacity:10 {{ classesOuter }}">
+                                <div class="absolute top:4 left:4 w:minus8 h:minus8 bg:primary-rg border:1 border:primary-rg bg-opacity:20 border-opacity:50 radius:xs"></div>
+                                <div class=" relative {{ classesInner }}">
+                                    {{ label }}
+                                </div>
+                                {{ icon }}
+                            </a>
+                        </li>
+                    {% endmacro %}
+                    {{ heroSubnav(
+                        link='#',
+                        label='Explore the landscape',
+                        icon=icons.chevRight('relative w:16 sm:mr:24 mt:1'),
+                        classesOuter='sm:border-r:1',
+                        classesInner='sm:ml:24'
+                    )}}
+                    {{ heroSubnav(
+                        link='#',
+                        label='Explore the culture',
+                        icon=icons.chevRight('relative w:16 sm:mr:24 mt:1'),
+                        classesOuter='border-t:1 sm:border-t:0',
+                        classesInner='sm:ml:24'
+                    )}}
+                    {{ heroSubnav(
+                        link='#',
+                        label='Explore the real estate',
+                        icon=icons.chevRight('relative w:16 sm:mr:24 mt:1'),
+                        classesOuter='border-t:1 sm:border-t:0 sm:border-l:1',
+                        classesInner='sm:ml:24'
+                    )}}
+                </ul>
+            </div>
+        </section>
+
+        {# Graphic #}
+        <section class="relative w:100p flex flex:col align-items:center justify-content:center">
+            <div data-hero-img class="container flex flex:col h:80vh min-h:512 align-items:center justify-content:center lg:radius:xl overflow:hidden">
+                <img data-hero-img-el src="/assets/images/home/pine-barren-painting.webp" width="1152" height="768" alt="" class="absolute w:100p h:100p object:cover">
+            </div>
+        </section>
+
+    </div>
+
+    {# Intro #}
+    <section class="section pt:64 sm:pt:96">
+        <div class="container flex flex:col align-items:center lg:grid lg:align-items:stretch grid-cols:2 text:center lg:text:left">
+            <div class="flex flex:col align-items:center lg:align-items:start">
+                <h2 class="font:12vw sm:font:10xl font:editorial leading:110 tracking:tight balance sm:max-w:512 mb:6">
+                    <span class="space:nowrap color:primary-rg">The Northwoods,</span> <span class="space:nowrap"><span class="italic">but</span> closer to home.</span>
+                </h2>
+            </div>
+            <div class="flex flex:col align-items:center justify-content:start lg:pt:28">
+                <p class="font:xl sm:font:2xl leading:170 color:ink-2 mb:24 max-w:576 md:max-w:896 balance">
+                    A short drive from Madison, Chicago, or the Twin Cities puts visitors at the intersection <span class="space:nowrap">of Wisconsin's</span> Driftless <span class="space:nowrap">and vast,</span> Northwoods pine forests—Black River Falls.
+                </p>
             </div>
         </div>
     </section>
 
-    <section {% if theme == 'light' %}data-section-theme="dark"{% else %}data-section-theme="light"{% endif %} class="section section:py min-h:100vh {% if theme == 'light' %}bg:sheet-6-i{% else %}bg:sheet-6{% endif %}"></section>
+    {# Activities#}
+    <section class="section pt:36 sm:pt:72">
+        <ul class="container grid sm:grid-cols:2 md:grid-cols:3 gap:18">
+            {% macro cardActivity(classes, img, width, height, brow, head, desc, cta) %}
+                <li class="relative {{ classes }} activity-card-outer">
+                    <a href="#" class="relative w:100p h:100p flex flex:col align-items:center justify-content:center bg:sheet-5 overflow:hidden radius:xl activity-card">
+                        {# Image #}
+                        <img src="/assets/images/home/{{ img }}.webp" width="{{ width }}" height="{{ height }}" class="absolute object:cover w:100p max-w:none h:100p" alt="">
+                        {# Content #}
+                        <div class="relative flex flex:col align-items:start justify-content:between w:100p h:100p">
+                            <div class="absolute bg:black opacity:30 w:100p h:100p activity-card-mask"></div>
+                            <div class="absolute bg:fade-down-i opacity:50 w:100p h:100p"></div>
+                            <div class="absolute bottom:0 bg:fade-down-i opacity:50 w:100p h:224"></div>
+                            <div class="absolute bottom:0 bg:fade-down-i opacity:50 w:100p h:128"></div>
+                            {# Brow #}
+                            <h3 class="relative flex align-items:center font:xs tracking:loose semibold bg:sheet-1 radius:xs h:24 mx:28 mt:28 px:8 shadow:xs leading:100">
+                                {{ brow | safe }}
+                            </h3>
+                            <div class="relative w:100p color:white px:28">
+                                <div class="flex align-items:end justify-content:between">
+                                    <h4 class="font:3xl lg:font:4xl font:editorial leading:130 balance max-w:384">
+                                        {{ head | safe }}
+                                    </h4>
+                                    {% if desc %}
+                                        <p class="medium mb:4 balance max-w:296 tracking:normal opacity:80 hidden lg:block">
+                                            {{ desc | safe }}
+                                        </p>
+                                    {% endif %}
+                                </div>
+                                <div class="w:100p h:1 bg:sheet-1 opacity:30 mt:14 mb:18"></div>
+                                <div class="flex align-items:center justify-content:between mb:18">
+                                    <p class="medium tracking:normal leading:100 mt:n1">
+                                        {{ cta | safe }}
+                                    </p>
+                                    {{ icons.chevRight('w:16')}}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            {% endmacro %}
+            {# Card #}
+            {{ cardActivity(
+                classes='ratio:1-1 md:ratio:unset md:col:2',
+                img='kayak',
+                width='744',
+                height='372',
+                brow='Get on the water',
+                head='An endless number of lakes, rivers, and streams to explore',
+                desc='Boat, kayak, fish, float, or beach, Black River Falls has pristine, crowd-free water for you.',
+                cta='Choose your waterway'
+            )}}
+            {{ cardActivity(
+                classes='flex ratio:1-1',
+                img='blueberry',
+                width='372',
+                height='372',
+                brow='Taste Wisconsin',
+                head='Pictureque orchards, bogs, and wineries',
+                desc=false,
+                cta='Pick your palette'
+            )}}
+            {{ cardActivity(
+                classes='flex ratio:1-1',
+                img='reading',
+                width='372',
+                height='372',
+                brow='Relax &amp; reset',
+                head='Simply enjoy nature in a cozy, stress-free space',
+                desc=false,
+                cta='Plan your stay'
+            )}}
+            {{ cardActivity(
+                classes='ratio:1-1 md:ratio:unset md:col:2',
+                img='hike-rect',
+                width='744',
+                height='372',
+                brow='Take a new trail',
+                head='Traverse hundreds of miles of hiking, biking, and UTV trails',
+                desc='Experience trails with unique geography and wildlife, like no other in the state.',
+                cta='Select your route'
+            )}}
+        </ul>
+    </section>
 
-    <section {% if theme == 'light' %}data-section-theme="light"{% else %}data-section-theme="dark"{% endif %} class="section section:py min-h:100vh {% if theme == 'light' %}bg:sheet-6{% else %}bg:sheet-6-i{% endif %}"></section>
+    {# Testimonial #}
+    <section class="section pt:48 sm:pt:96 overflow:hidden">
+        <div class="container flex flex:col align-items:center justify-content:between">
+            <div class="relative flex flex:col align-items:center justify-content:center font:8vw sm:font:8xl font:editorial italic balance text:center leading:150">
+                {{ icons.quoteLeft('sm:absolute sm:left:n128 lg:left:n192 w:24 h:auto sm:h:100p sm:w:auto sm:opacity:4 mb:24 sm:mb:0 color:accent-rg sm:color:ink-3') }}
+                {{ icons.quoteRight('hidden sm:block sm:absolute sm:right:n128 lg:right:n192 sm:h:100p sm:w:auto opacity:4') }}
+                <p>
+                    You don't know beautiful until you visit this place... <span class="space:nowrap">I hike</span> almost every day... <span class="color:primary-rg">this place is TOP of my list.</span>
+                </p>
+            </div>
+            <div class="relative w:100p flex align-items:center justify-content:between mt:20">
+                <div class="flex align-items:center gap:8">
+                    <div class="block w:36 h:36 p:1  border:1 border:ink-3 border-opacity:20 radius:full">
+                        <img src="/assets/images/home/reviewer-becca.webp" width="32" height="32" class="w:100p h:auto radius:full" alt="">
+                    </div>
+                    <div class="flex align-items:center gap:8 medium">
+                        <p>
+                            Becca Marie
+                        </p>
+                        <p class="color:ink-1 tracking:loosest font:2xs uppercase semibold bg:sheet-1 px:6 py:2 radius:2xs">
+                            Local guide
+                        </p>
+                    </div>
+                </div>
+                <div class="flex align-items:center gap:2">
+                    {{ icons.star('w:16') }}
+                    {{ icons.star('w:16') }}
+                    {{ icons.star('w:16') }}
+                    {{ icons.star('w:16') }}
+                    {{ icons.star('w:16') }}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="w:100p min-h:640"></div>
+
+    {# Intro #}
+    <section class="section pt:112 section:pb">
+        <div class="container grid grid-cols:2">
+            <div class="flex flex:col align-items:start">
+                <h2 class="font:10xl font:editorial leading:110 tracking:tight balance mb:6">
+                    <span class="color:primary-rg">The Northwoods,</span> but closer to home.
+                </h2>
+                <p class="font:2xl leading:170 color:ink-2 mb:24">
+                    A short drive from Madison, Chicago, and the Twin Cities puts visitors at the intersection of Wisconsin's Driftless <span class="space:nowrap">and vast,</span> Northwoods pine forests—Black River Falls.
+                </p>
+                <div class="flex align-items:center gap:16">
+                    <a href="#" class="btn btn:primary btn:lg">
+                        Testing this out
+                    </a>
+                    <a href="#" class="btn btn:secondary btn:lg">
+                        Testing this out
+                    </a>
+                </div>
+                <div class="w:100p border-t:1 border:ink-3 opacity:10 my:32"></div>
+                <div class="flex align-items:center">
+                    <div class="flex align-items:center">
+                        {{ icons.laurelLeft('w:32 opacity:20') }}
+                        <h3 class="flex flex:col align-items:center leading:100 mb:8">
+                            <span class="font:2xl semibold">
+                                200,000+
+                            </span>
+                            <span class="font:sm color:ink-1">
+                                acres of public forest
+                            </span>
+                        </h3>
+                        {{ icons.laurelRight('w:32 opacity:20') }}
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex:col align-items:center justify-content:center">
+                <div class="font:xl p:16 font:serif italic bg:sheet-5 bg-opacity:50 border:1 border:sheet-5 max-w:448 radius:xs shadow:xl">
+                    <p>
+                        You don't know beautiful until you visit this place... <span class="space:nowrap">I hike</span> almost every day... this place is TOP of my list.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# Data #}
+    <section class="section pt:48 section:pb">
+        <div class="container flex align-items:center justify-content:between">
+            <div class="flex align-items:center">
+                {{ icons.laurelLeft('w:48 mr:n6 opacity:20') }}
+                <h3 class="flex flex:col align-items:center leading:100 mb:12">
+                    <span class="font:4xl semibold">
+                        100+
+                    </span>
+                    <span class="color:ink-1">
+                        miles of atv trails
+                    </span>
+                </h3>
+                {{ icons.laurelRight('w:48 ml:n6 opacity:20') }}
+            </div>
+            <div class="flex align-items:center">
+                {{ icons.laurelLeft('w:48 mr:n6 opacity:20') }}
+                <h3 class="flex flex:col align-items:center leading:100 mb:12">
+                    <span class="font:4xl semibold">
+                        200,000+
+                    </span>
+                    <span class="color:ink-1">
+                        acres of public forest
+                    </span>
+                </h3>
+                {{ icons.laurelRight('w:48 ml:n6 opacity:20') }}
+            </div>
+            <div class="flex align-items:center">
+                {{ icons.laurelLeft('w:48 mr:n6 opacity:20') }}
+                <h3 class="flex flex:col align-items:center leading:100 mb:12">
+                    <span class="font:4xl semibold">
+                        100+
+                    </span>
+                    <span class="color:ink-1">
+                        miles of hiking trails
+                    </span>
+                </h3>
+                {{ icons.laurelRight('w:48 ml:n6 opacity:20') }}
+            </div>
+        </div>
+    </section>
+
+    <div class="w:100p h:100vh"></div>
 
 </main>
+
+<script src="/assets/javascript/home.js"></script>

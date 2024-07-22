@@ -33,6 +33,9 @@ $shadows: (
     headerLight: (
         0 1px 1px 0px rgba(0, 0, 0, 0.1)
     ),
+    headerPine: (
+        0 1px 1px 0px rgba(var(--sheet-3-p), 1)
+    ),
     footerDark: (
         0 -1px 1px 0px rgba(255, 255, 255, 0.15)
     ),

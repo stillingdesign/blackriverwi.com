@@ -4,23 +4,25 @@
 /* purgecss start ignore */
 
 // Base Button
-.btn { @include apply("flex align-items:center justify-content:center radius:full border:1 leading:100 semibold outline:none flex-shrink:0"); }
+.btn { @include apply("flex align-items:center justify-content:center border:1 leading:100 semibold outline:none flex-shrink:0"); }
 
 // Button Sizes
-.btn\:sm { @include apply("font:xs px:12 py:10")}
-.btn\:md { @include apply("font:sm px:18 py:14")}
-.btn\:lg { @include apply("font:md px:20 py:18")}
+.btn\:sm { @include apply("font:xs px:12 py:10 radius:2xs")}
+.btn\:md { @include apply("font:sm px:18 py:14 radius:xs")}
+.btn\:lg { @include apply("font:md px:20 py:16 radius:xs")}
+.btn\:header { @include apply("font:sm px:14 py:10 radius:xs")}
 
 // Button Colors
-.btn\:primary   { @include apply("color:link-hv bg:primary-rg bg-opacity:10 border:primary-rg border-opacity:30 backdrop backdrop-blur:sm transition:200 cubic-out"); transform: translate3d(0, 0, 0); }
-.btn\:primary-i { @include apply("color:ink-3-i bg:primary-rg bg-opacity:20 border:primary-rg border-opacity:50 backdrop backdrop-blur:sm transition:200 cubic-out"); transform: translate3d(0, 0, 0); }
+.btn\:primary   { @include apply("color:primary-hv bg:primary-rg bg-opacity:10 border:primary-rg border-opacity:30 backdrop backdrop-blur:sm transition:200 cubic-out"); transform: translate3d(0, 0, 0); }
+.btn\:secondary   { @include apply("color:primary-hv bg:primary-rg bg-opacity:0 border:primary-rg border-opacity:30 backdrop backdrop-blur:sm transition:200 cubic-out"); transform: translate3d(0, 0, 0); }
+.btn\:primary-i { @include apply("color:ink-3-i bg:white bg-opacity:10 border:white border-opacity:10 backdrop backdrop-blur:sm transition:200 cubic-out"); transform: translate3d(0, 0, 0); }
 .btn\:white     { @include apply("color:ink-3-i bg:sheet-1    bg-opacity:10 border:sheet-1    border-opacity:30 backdrop backdrop-blur:sm transition:200 cubic-out"); transform: translate3d(0, 0, 0); }
 .btn\:black     { @include apply("color:ink-3   bg:sheet-6-i  bg-opacity:10 border:sheet-6-i  border-opacity:30 backdrop backdrop-blur:sm transition:200 cubic-out"); transform: translate3d(0, 0, 0); }
 
 // Button Hovers
 @media (hover: hover) {
     .btn\:primary:hover   { @include apply("shadow:xs bg-opacity:20 border-opacity:50 transition:200 cubic-out"); transform: translate3d(0, 0, 0); animation: bump 50ms ease-in-out 25ms;}
-    .btn\:primary-i:hover { @include apply("bg-opacity:40 border-opacity:70 transition:200 cubic-out"); transform: translate3d(0, 0, 0); animation: bump 50ms ease-in-out 25ms; }
+    .btn\:primary-i:hover { @include apply("bg-opacity:20 border-opacity:40 transition:200 cubic-out"); transform: translate3d(0, 0, 0); animation: bump 50ms ease-in-out 25ms; }
     .btn\:white:hover     { @include apply("shadow:xs bg-opacity:30 border-opacity:50 transition:200 cubic-out"); transform: translate3d(0, 0, 0); animation: bump 50ms ease-in-out 25ms; }
     .btn\:black:hover     { @include apply("shadow:xs bg-opacity:20 border-opacity:50 transition:200 cubic-out"); transform: translate3d(0, 0, 0); animation: bump 50ms ease-in-out 25ms; }
     .hover\:bump:hover { animation: bump 50ms ease-in-out 25ms; }
@@ -52,3 +54,52 @@
 .link-rg-i:focus-visible { @include apply("color:white bg:primary-rg outline:none")}
 
 /* purgecss end ignore */
+
+.activity-card-outer {
+    transition: opacity 400ms cubic-bezier(0, 0.66, 0.33, 1) 100ms;
+    &.not-hovered { opacity: 0.25; }
+}
+
+.activity-card {
+    img { transition: transform 500ms cubic-bezier(0, 0.66, 0.33, 1) 0ms; }
+    .activity-card-mask { transition: opacity 500ms cubic-bezier(0, 0.66, 0.33, 1) 0ms; }
+    @media (hover: hover) { &:hover {
+        img { transform: scale3d(1.2,1.2,1.2); }
+        .activity-card-mask { @include apply("opacity:70"); }
+    }}
+    &:focus-visible {
+        outline: none;
+        img { transform: scale3d(1.2,1.2,1.2); }
+        .activity-card-mask { @include apply("bg:primary-rg opacity:90"); }
+    }
+}
+
+.hero-subnav-item {
+    color: rgba(var(--ink-3), 1);
+    transition: color 300ms cubic-bezier(0, 0.66, 0.33, 1) 0ms;
+    div:first-child {
+        opacity: 0;
+        transform: scale3d(0.95,0.95,0.95);
+        transition: opacity 300ms cubic-bezier(0, 0.66, 0.33, 1) 0ms, transform 300ms cubic-bezier(0, 0.66, 0.33, 1) 0ms;
+    }
+    svg { transition: transform 300ms cubic-bezier(0, 0.66, 0.33, 1) 0ms; }
+    @media (hover: hover) { &:hover {
+        color: rgba(var(--primary-hv), 1);
+        div:first-child {
+            opacity: 1;
+            transform: scale3d(1,1,1);
+        }
+        svg { transform: translateX(0.5rem); }
+    }}
+    &:focus-visible {
+        outline: none;
+        color: rgba(var(--white), 1);
+        div:first-child {
+            background: rgba(var(--primary-rg), 1);
+            border: 1px solid rgba(var(--primary-rg), 1);
+            opacity: 1;
+            transform: scale3d(1,1,1);
+        }
+        svg { transform: translateX(0.5rem); }
+    }
+}
