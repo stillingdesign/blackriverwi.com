@@ -22,6 +22,7 @@
 // Button Hovers
 @media (hover: hover) {
     .btn\:primary:hover   { @include apply("shadow:xs bg-opacity:20 border-opacity:50 transition:200 cubic-out"); transform: translate3d(0, 0, 0); animation: bump 50ms ease-in-out 25ms;}
+    .btn\:secondary:hover   { @include apply("shadow:xs bg-opacity:6 border-opacity:50 transition:200 cubic-out"); transform: translate3d(0, 0, 0); animation: bump 50ms ease-in-out 25ms;}
     .btn\:primary-i:hover { @include apply("bg-opacity:20 border-opacity:40 transition:200 cubic-out"); transform: translate3d(0, 0, 0); animation: bump 50ms ease-in-out 25ms; }
     .btn\:white:hover     { @include apply("shadow:xs bg-opacity:30 border-opacity:50 transition:200 cubic-out"); transform: translate3d(0, 0, 0); animation: bump 50ms ease-in-out 25ms; }
     .btn\:black:hover     { @include apply("shadow:xs bg-opacity:20 border-opacity:50 transition:200 cubic-out"); transform: translate3d(0, 0, 0); animation: bump 50ms ease-in-out 25ms; }
