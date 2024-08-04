@@ -242,7 +242,7 @@ changefreq: daily
     {# Featured #}
     <section data-section-theme="light" class="section pt:48 sm:pt:96 section:pb">
         <div class="container flex flex:col align-items:center justify-content:center">
-            <div data-slider-featured class="relative w:100p flex flex:col-reverse sm:grid sm:grid-cols:2 bg:sheet-5 radius:xl overflow:hidden">
+            <div data-slider-featured class="relative w:100p flex flex:col-reverse sm:grid sm:grid-cols:2 bg:sheet-5 radius:xl shadow:xl overflow:hidden">
                 {# Content #}
                 <div class="relative flex flex:col align-items:center justify-content:center text:center z:2 overflow:hidden">
                     {# Content Pane #}
@@ -311,7 +311,7 @@ changefreq: daily
                             <img src="{{ src }}" alt="{{ alt }}" width="576" height="576" class="absolute w:100p h:100p object:cover">
                         </div>
                     {% endmacro %}
-                    <div data-slider-img="1" class="absolute w:100p h:100p flex align-items:center justify-content:center overflow:hidden bg:red"></div>
+                    {{ slideImg(1, "/assets/images/home/rev-coffee.webp", "an abstract painting of revolution coffee in Black River Falls") }}
                     {{ slideImg(2, "/assets/images/home/wazee-beach.webp", "an abstract painting of the beach at Lake Wazee", true) }}
                     <div data-slider-img="3" class="absolute w:100p h:100p flex align-items:center justify-content:center overflow:hidden bg:yellow" style="position:absolute; visibility:hidden; opacity:0; transform: translate3d(100%,0,0);"></div>
                 </div>

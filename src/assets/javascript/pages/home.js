@@ -50,8 +50,8 @@ function sliderFeatured() {
                 .to(slideNext, { x: '0', duration: 1, autoAlpha: 1, ease: 'power3.inOut' }, 0)
                 .to(imgCurrent, { x: '-100%', duration: 1, ease: 'power3.inOut' }, 0)
                 .to(imgNext, { x: '0', duration: 1, ease: 'power3.inOut' }, 0)
-                .to(indicateCurrent, { opacity:0.2, duration: 1, ease: 'power3.inOut' }, 0)
-                .to(indicateNext, { opacity:1, duration: 1, ease: 'power3.inOut' }, 0)
+                .to(indicateCurrent, { opacity:0.2, overwrite: true, duration: 1, ease: 'power3.inOut' }, 0)
+                .to(indicateNext, { opacity:1, overwrite: true, duration: 1, ease: 'power3.inOut' }, 0)
                 .set(slideCurrent, { x: '100%' })
                 .set(imgCurrent, { autoAlpha: 0, x: '100%' })
                 .set(back, { pointerEvents: 'auto' })
@@ -64,6 +64,8 @@ function sliderFeatured() {
             const slidePrev = slider.querySelector(`[data-slider-slide="${active - 1}"]`) || slider.querySelector(`[data-slider-slide="${slides.length}"]`);
             const imgCurrent = slider.querySelector(`[data-slider-img="${active}"]`);
             const imgPrev = slider.querySelector(`[data-slider-img="${active - 1}"]`) || slider.querySelector(`[data-slider-slide="${slides.length}"]`);
+            const indicateCurrent = slider.querySelector(`[data-slider-indicate="${active}"]`);
+            const indicatePrev = slider.querySelector(`[data-slider-indicate="${active - 1}"]`) || slider.querySelector(`[data-slider-slide="${slides.length}"]`);
             const tl = gsap.timeline({
                 onComplete: function() {
                     active--;
@@ -81,6 +83,8 @@ function sliderFeatured() {
                 .to(slidePrev, { x: '0', duration: 1, autoAlpha: 1, ease: 'power3.inOut' }, 0)
                 .to(imgCurrent, { x: '100%', duration: 1, ease: 'power3.inOut' }, 0)
                 .to(imgPrev, { x: '0', duration: 1, ease: 'power3.inOut' }, 0)
+                .to(indicateCurrent, { opacity:0.2, overwrite: true, duration: 1, ease: 'power3.inOut' }, 0)
+                .to(indicatePrev, { opacity:1, overwrite: true, duration: 1, ease: 'power3.inOut' }, 0)
                 .set(slideCurrent, { x: '100%' })
                 .set(imgCurrent, { x: '100%', autoAlpha: 0 })
                 .set(back, { pointerEvents: 'auto' })
