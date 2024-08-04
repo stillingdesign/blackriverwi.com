@@ -249,13 +249,13 @@ changefreq: daily
                     {% macro slideContent(hide, numb, brow, head, desc, ctaPrimaryLink, ctaPrimary, ctaSecondaryLink, ctaSecondary, target) %}
                         <div data-slider-slide="{{ numb }}" class="relative flex flex:col justify-content:center align-items:center w:100p h:100p pt:24 sm:pt:0 pb:80 sm:pb:56 text:center" {% if hide %}style="position:absolute; visibility:hidden; opacity:0; transform: translate3d(100%,0,0);"{% endif %}>
                             {# Brow #}
-                            <h2 class="relative flex align-items:center font:xs tracking:loose semibold bg:sheet-1 radius:xs h:24 px:8 shadow:xs leading:100">
+                            <h2 class="relative flex align-items:center font:xs tracking:loose semibold bg:sheet-1 radius:xs h:24 px:8 shadow:xs leading:100 flex-shrink:0">
                                 {{ brow | safe }}
                             </h2>
                             <h3 class="font:4xl sm:font:6xl lg:font:8xl font:editorial leading:110 tracking:tight balance mt:20 mb:6">
                                 {{ head | safe }}
                             </h3>
-                            <p class="font:md sm:font:lg md:font:xl leading:170 color:ink-2 balance mb:20  max-w:288 sm:max-w:384">
+                            <p class="font:md sm:font:lg md:font:xl leading:170 color:ink-2 balance mb:20  max-w:320 sm:max-w:384">
                                 {{ desc | safe}}
                             </p>
                             <div class="flex align-items:center gap:16">
