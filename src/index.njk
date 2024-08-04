@@ -242,20 +242,20 @@ changefreq: daily
     {# Featured #}
     <section data-section-theme="light" class="section pt:48 sm:pt:96 section:pb">
         <div class="container flex flex:col align-items:center justify-content:center">
-            <div data-slider-featured class="relative w:100p grid grid-cols:2 bg:sheet-5 radius:xl overflow:hidden">
+            <div data-slider-featured class="relative w:100p flex flex:col-reverse sm:grid sm:grid-cols:2 bg:sheet-5 radius:xl overflow:hidden">
                 {# Content #}
                 <div class="relative flex flex:col align-items:center justify-content:center text:center z:2 overflow:hidden">
                     {# Content Pane #}
-                    {% macro paneContent(hide, numb, brow, head, desc, ctaPrimaryLink, ctaPrimary, ctaSecondaryLink, ctaSecondary, target) %}
-                        <div data-slider-slide="{{ numb }}" class="relative flex flex:col justify-content:center align-items:center w:100p h:100p px:72 pb:56 text:center" {% if hide %}style="position:absolute; visibility:hidden; opacity:0; transform: translate3d(100%,0,0);"{% endif %}>
+                    {% macro slideContent(hide, numb, brow, head, desc, ctaPrimaryLink, ctaPrimary, ctaSecondaryLink, ctaSecondary, target) %}
+                        <div data-slider-slide="{{ numb }}" class="relative flex flex:col justify-content:center align-items:center w:100p h:100p pt:24 sm:pt:0 pb:80 sm:pb:56 text:center" {% if hide %}style="position:absolute; visibility:hidden; opacity:0; transform: translate3d(100%,0,0);"{% endif %}>
                             {# Brow #}
                             <h2 class="relative flex align-items:center font:xs tracking:loose semibold bg:sheet-1 radius:xs h:24 px:8 shadow:xs leading:100">
                                 {{ brow | safe }}
                             </h2>
-                            <h3 class="font:8xl font:editorial leading:110 tracking:tight balance mt:20 mb:6">
+                            <h3 class="font:4xl sm:font:6xl lg:font:8xl font:editorial leading:110 tracking:tight balance mt:20 mb:6">
                                 {{ head | safe }}
                             </h3>
-                            <p class="font:xl leading:170 color:ink-2 balance mb:20">
+                            <p class="font:md sm:font:lg md:font:xl leading:170 color:ink-2 balance mb:20  max-w:288 sm:max-w:384">
                                 {{ desc | safe}}
                             </p>
                             <div class="flex align-items:center gap:16">
@@ -268,7 +268,7 @@ changefreq: daily
                             </div>
                         </div>
                     {% endmacro %}
-                    {{ paneContent(
+                    {{ slideContent(
                         numb="1",
                         brow="Featured business",
                         head="Revolution Coffee",
@@ -279,65 +279,75 @@ changefreq: daily
                         ctaSecondary="Get directions",
                         target="_blank"
                     )}}
-                    {{ paneContent(
+                    {{ slideContent(
                         hide=true,
                         numb="2",
                         brow="Featured park",
                         head="Lake Wazee",
-                        desc="Enjoy delicious drinks, tasty food, wine and beer in a cozy setting—located in the center of downtown Black River Falls.",
-                        ctaPrimaryLink="http://www.revbrf.com/?utm_source=blackriverwi&utm_medium=homepage&utm_campaign=featured",
-                        ctaPrimary="See the menu",
-                        ctaSecondaryLink="https://maps.app.goo.gl/pWQR1EsEcRX4fybN8",
+                        desc="Swim, dive, fish, kayak, camp, or hike in and around the crystal clear waters of Lake Wazee, Wisconsin's deepest lake.",
+                        ctaPrimaryLink="#placeholder",
+                        ctaPrimary="Explore the park",
+                        ctaSecondaryLink="https://maps.app.goo.gl/Q1Qvt37SoZMpGqGo6",
                         ctaSecondary="Get directions",
                         target="_blank"
                     )}}
-                    {{ paneContent(
+                    {{ slideContent(
                         hide=true,
                         numb="3",
                         brow="Featured business",
-                        head="Cains Orchard",
-                        desc="Enjoy delicious drinks, tasty food, wine and beer in a cozy setting—located in the center of downtown Black River Falls.",
-                        ctaPrimaryLink="http://www.revbrf.com/?utm_source=blackriverwi&utm_medium=homepage&utm_campaign=featured",
-                        ctaPrimary="See the menu",
-                        ctaSecondaryLink="https://maps.app.goo.gl/pWQR1EsEcRX4fybN8",
+                        head="Cain's Orchard",
+                        desc="Pick your own apples, grapes, and blueberries at a family-owned orchard and vineyard in the hills outside of Black River Falls.",
+                        ctaPrimaryLink="https://www.cainsorchards.com?utm_source=blackriverwi&utm_medium=homepage&utm_campaign=featured",
+                        ctaPrimary="View availability",
+                        ctaSecondaryLink="https://maps.app.goo.gl/kXZ5gvVkEn9ULzgR6",
                         ctaSecondary="Get directions",
                         target="_blank"
                     )}}
                 </div>
                 {# Graphic #}
-                <div class="relative w:100p flex min-h:576 bg:sheet-4 radius-r:xl"></div>
-                {# Navigation #}
-                <div class="absolute bottom:0 left:0 w:50p flex align-items:center justify-content:between gap:16 px:28 py:20 border-t:1 border:black border-opacity:10 z:3">
-                        <button data-slider-back class="relative flex justify-content:start align-items:center gap:12 font:sm tracking:loose leading:100 semibold color:primary-rg w:80">
-                            <div class="flex align-items:center justify-content:center w:32 h:32 radius:full bg:sheet-1">
-                                {{ icons.chevLeft('w:16') }}
-                            </div>
-                            <div>
-                                Back
-                            </div>
-                        </button>
-                        <div class="flex align-items:center">
-                            <div class="p:4" style="opacity:1;">
-                                <div class="w:8 h:8 radius:full bg:primary-rg"></div>
-                            </div>
-                            <div class="p:4" style="opacity:0.2;">
-                                <div class="w:8 h:8 radius:full bg:primary-rg"></div>
-                            </div>
-                            <div class="p:4" style="opacity:0.2;">
-                                <div class="w:8 h:8 radius:full bg:primary-rg"></div>
-                            </div>
+                <div class="relative w:100p flex min-h:192 sm:min-h:448 md:min-h:576 bg:sheet-4 overflow:hidden">
+                    {% macro slideImg(numb, src, alt, hide) %}
+                        <div data-slider-img="{{ numb }}" class="absolute w:100p h:100p flex align-items:center justify-content:center overflow:hidden bg:red" {% if hide %}style="visibility:hidden; opacity:0; transform: translate3d(100%,0,0);"{% endif %}>
+                            <img src="{{ src }}" alt="{{ alt }}" width="576" height="576" class="absolute w:100p h:100p object:cover">
                         </div>
-                        <button data-slider-next class="relative flex justify-content:end align-items:center gap:12 font:sm tracking:loose leading:100 semibold color:primary-rg w:80">
-                            <div>
-                                Next
-                            </div>
-                            <div class="flex align-items:center justify-content:center w:32 h:32 radius:full bg:sheet-1">
-                                {{ icons.chevRight('w:16') }}
-                            </div>
-                        </button>
+                    {% endmacro %}
+                    <div data-slider-img="1" class="absolute w:100p h:100p flex align-items:center justify-content:center overflow:hidden bg:red"></div>
+                    {{ slideImg(2, "/assets/images/home/wazee-beach.webp", "an abstract painting of the beach at Lake Wazee", true) }}
+                    <div data-slider-img="3" class="absolute w:100p h:100p flex align-items:center justify-content:center overflow:hidden bg:yellow" style="position:absolute; visibility:hidden; opacity:0; transform: translate3d(100%,0,0);"></div>
+                </div>
+                {# Navigation #}
+                <div class="absolute bottom:0 left:0 w:100p sm:w:50p flex align-items:center justify-content:between gap:16 px:16 sm:px:28 py:12 sm:py:20 border-t:1 border:black border-opacity:10 z:3">
+                    <div data-slider-timer class="absolute top:n1 left:0 h:1 bg:primary-rg bg-opacity:40 transform:center-right" style="width:0;"></div>
+                    <button data-slider-back class="relative flex justify-content:start align-items:center gap:12 font:sm tracking:loose leading:100 semibold color:primary-rg w:80">
+                        <div class="flex align-items:center justify-content:center w:32 h:32 radius:full bg:sheet-1">
+                            {{ icons.chevLeft('w:16') }}
+                        </div>
+                        <div>
+                            Back
+                        </div>
+                    </button>
+                    <div class="relative flex align-items:center">
+                        <div data-slider-indicate="1" class="p:4" style="opacity:1;">
+                            <div class="w:8 h:8 radius:full bg:primary-rg"></div>
+                        </div>
+                        <div data-slider-indicate="2" class="p:4" style="opacity:0.2;">
+                            <div class="w:8 h:8 radius:full bg:primary-rg"></div>
+                        </div>
+                        <div data-slider-indicate="3" class="p:4" style="opacity:0.2;">
+                            <div class="w:8 h:8 radius:full bg:primary-rg"></div>
+                        </div>
                     </div>
+                    <button data-slider-next class="relative flex justify-content:end align-items:center gap:12 font:sm tracking:loose leading:100 semibold color:primary-rg w:80">
+                        <div>
+                            Next
+                        </div>
+                        <div class="flex align-items:center justify-content:center w:32 h:32 radius:full bg:sheet-1">
+                            {{ icons.chevRight('w:16') }}
+                        </div>
+                    </button>
+                </div>
             </div>
-            <img data-hero-img-inner src="/assets/images/home/bear.webp" width="768" height="1280" alt="" class="hidden md:block absolute top:n48 lg:top:n56 lg:left:n112 ml:n92 lg:ml:n12 w:128 lg:w:144 h:auto">
+            <img data-hero-img-inner src="/assets/images/home/bear.webp" width="768" height="1280" alt="" class="hidden md:block absolute top:n48 lg:top:n56 lg:left:n112 ml:n92 lg:ml:n12 w:128 lg:w:144 h:auto z:3">
         </div>
     </section>
 
