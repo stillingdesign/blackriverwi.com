@@ -63,9 +63,9 @@ function sliderFeatured() {
             const slideCurrent = slider.querySelector(`[data-slider-slide="${active}"]`);
             const slidePrev = slider.querySelector(`[data-slider-slide="${active - 1}"]`) || slider.querySelector(`[data-slider-slide="${slides.length}"]`);
             const imgCurrent = slider.querySelector(`[data-slider-img="${active}"]`);
-            const imgPrev = slider.querySelector(`[data-slider-img="${active - 1}"]`) || slider.querySelector(`[data-slider-slide="${slides.length}"]`);
+            const imgPrev = slider.querySelector(`[data-slider-img="${active - 1}"]`) || slider.querySelector(`[data-slider-img="${slides.length}"]`);
             const indicateCurrent = slider.querySelector(`[data-slider-indicate="${active}"]`);
-            const indicatePrev = slider.querySelector(`[data-slider-indicate="${active - 1}"]`) || slider.querySelector(`[data-slider-slide="${slides.length}"]`);
+            const indicatePrev = slider.querySelector(`[data-slider-indicate="${active - 1}"]`) || slider.querySelector(`[data-slider-indicate="${slides.length}"]`);
             const tl = gsap.timeline({
                 onComplete: function() {
                     active--;
